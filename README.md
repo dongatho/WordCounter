@@ -31,28 +31,28 @@ Antes de detallar el funcionamiento se mencionan algunas consideraciones:
 ### Funcionamiento
 Antes de iniciar la búsqueda de la palabra lo que se hace es *pre-procesar los ficheros* , así que para que cada uno de ellos :
 
- - Lo primero que se hace es contar las palabras dentro del archivo apoyandonos para ello en un Map llamado 'wordMap' que almacena cada palabra (key) asociando al número de ocurrencias de la misma (value).
+ - Lo primero que se hace es contar las palabras dentro del archivo apoyandonos para ello en un Map llamado 'wordMap' que almacena cada palabra (key) asociandola al número de ocurrencias de la misma (value).
 
     ![wordMap](img/wordMap.png)
 
- - En seguida, se obtiene el total de palabras de el fichero sumando todos los valores del Map 'wordMap'
+ - En seguida, se obtiene el total de palabras del fichero sumando todos los valores del Map 'wordMap'
 
     ![total](img/total.png)
 
- - Teniendo el total anterior y el número de ocurrencias de cada palabra (wordMap) es posible calcular el porcentaje de apariciones de cada palabra. Estos porcentajes se guardan en un Map llamado 'percentageMap', cuyas claves son las palabras y los valores correspondientes es el porcentaje de ocurrencias.
+ - Teniendo el total anterior y el número de ocurrencias de cada palabra (wordMap) es posible calcular el porcentaje de apariciones de cada palabra. Estos porcentajes se guardan en un Map llamado 'percentageMap', cuyas claves son las palabras y los valores correspondientes son el porcentaje de ocurrencias.
 
     ![pctMap](img/pctMap.png)
 
- - Este último Map es a su vez almacenado en otro Map ('fileMap') que lo asocia con el nombre de archivo al que pertenece. El nombre del fichero es la clave de es nuevo Map.
+ - Este último objeto (uno por cada fichero) es a su vez almacenado en otro Map ('fileMap') que lo asocia con el nombre de archivo al que pertenece. En este nuevo Map, el nombre del fichero es la clave y 'percentageMap' el valor correspondiente.
 
 
 Con todos los ficheros del directorio ya procesados, entonces: 
 
- - Se solicita la palabra de búsqueda ('targetWord') para *filtrar en 'fileMap' todos los ficheros que contienen la palabra* y guardarlos en un nueva colección llamada 'filteredtMap'
+ - Se solicita la palabra de búsqueda ('targetWord') para *filtrar en 'fileMap' todos los ficheros que contienen la palabra* y son guardados en un nueva colección llamada 'filteredtMap'
 
     ![filtered](img/filtered.png)
 
- - 'filteredtMap' es ordenada descendentemente y de esta se toman los N-primeros elementos que luego son enseñados al usuario.
+ - 'filteredtMap' es ordenada descendentemente y de esta se toman los N-primeros elementos (top_N = 10) que luego son enseñados al usuario.
 
     ![sorted](img/sorted.png)
 
