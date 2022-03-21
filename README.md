@@ -31,7 +31,7 @@ Antes de detallar el funcionamiento se mencionan algunas consideraciones:
 ### Funcionamiento
 Antes de iniciar la búsqueda de la palabra lo que se hace es *pre-procesar los ficheros* , así que para que cada uno de ellos :
 
- - Lo primero que se hace es contar las palabras dentro del archivo apoyandonos para ello un Map llamado 'wordMap' que almacena cada palabra (key) asociando al número de ocurrencias de la misma (value).
+ - Lo primero que se hace es contar las palabras dentro del archivo apoyandonos para ello en un Map llamado 'wordMap' que almacena cada palabra (key) asociando al número de ocurrencias de la misma (value).
 
     ![wordMap](img/wordMap.png)
 
