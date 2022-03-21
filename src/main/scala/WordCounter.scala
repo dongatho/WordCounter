@@ -80,23 +80,23 @@ object WordCounter {
     val okFileExtensions = List("txt", "csv", "dat")
     val files = getListOfFiles(new File(path), okFileExtensions)
 
+    val fileMap = HashMap[String, Map[String, Float]]()
+    // Building a file Map ( fileName -> percentages of words in file  )
+    for( fileName <- files){
+      var wordMap = wordCount(fileName.getAbsolutePath)
+      var total = getTotalWord(wordMap)
+
+      // get a new map with percentage based on word total
+      var percentageMap = getPercentageMap(wordMap, total)
+
+      fileMap.addOne( fileName.getName, percentageMap )
+    }
+
     var targetWord = ""
     do {
       targetWord = readLine("\nEnter target word or 'quit' to exit: ")
 
       val top_N = 10;
-      val fileMap = HashMap[String, Map[String, Float]]()
-
-      // Building a file Map ( fileName -> percentages of words in file  )
-      for( fileName <- files){
-        var wordMap = wordCount(fileName.getAbsolutePath)
-        var total = getTotalWord(wordMap)
-
-        // get a new map with percentage based on word total
-        var percentageMap = getPercentageMap(wordMap, total)
-
-        fileMap.addOne( fileName.getName, percentageMap )
-      }
 
       // find all of files which contain the target word
       val filteredtMap = fileMap.filter( x => x._2.exists( y => y._1 == targetWord ) ).map({
